@@ -1,0 +1,32 @@
+{% extends "members/base.html" %}
+
+{% block page_content %}
+<html>
+    <h1 class="btn-success text-center">Members</h1>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>UID</th>
+                <th>Name</th>
+                <th>Email Address</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+             {% for member in members%}
+            <tr>
+                <td>{{member.id}}</td>
+                <td>{{member.name}}</td> 
+                <td>{{member.email}}</td>
+                <td class="text-center"><a href="{% url 'members:update' member.id %}" class="text-info" style="text-decoration:none">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'members:delete' member.id %}" class="text-danger" style="text-decoration:none">Delete</a></td>
+            
+            </tr>
+    
+             {% endfor %}
+        </tbody>
+    </table>
+    <p class="text-center h4">
+        <a href='add/' class="btn btn-info" style="text-decoration:none">Add Member</a>
+    </p>
+    </html>
+{% endblock %}

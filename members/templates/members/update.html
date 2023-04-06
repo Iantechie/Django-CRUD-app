@@ -1,0 +1,25 @@
+{% extends 'members/base.html' %}
+
+{% block page_content %}
+<h1 class="text-center text-warning">Update Member details</h1>
+<div class="form">
+<form action="{% url 'members:updaterecord' member.id %}" method="POST">
+    {% csrf_token %}
+    <input class="form-control" name="name" placeholder="Enter new name:" value="{{member.name}}" required> <br>
+    <input class="form-control" name="email" placeholder="Enter new email:" value="{{member.email}}" required><br>
+    <input class="form-control" type="submit" value="Update" style="background-color: #007A37; color:#fff">
+
+</form>
+</div>
+<style>
+    .form,input{
+        margin: 5px;
+        padding: 15px 25px;
+        width: 60%;
+        margin: auto;
+        border: none;
+        outline: none;
+    }
+
+</style>
+{% endblock %}

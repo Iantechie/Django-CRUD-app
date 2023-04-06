@@ -1,0 +1,25 @@
+{% extends 'members/base.html' %}
+
+{% block page_content %}
+<h1 class="text-center text-info">Enter details...</h1>
+<div class="form">
+<form action="{% url 'members:addrecord' %}" method="POST">
+    {% csrf_token %}
+    <input class="form-control" name="name" placeholder="Enter official Name:" required> <br>
+    <input class="form-control" name="email" placeholder="Enter valid Email:" required> <br>
+    <input class="form-control" type="submit" value="Submit" style="background-color: #007A37; color:#fff"> 
+</form>
+</div>
+<style>
+    .form,input{
+        margin: 5px;
+        padding: 15px 25px;
+        width: 60%;
+        margin: auto;
+        border: none;
+        outline: none;
+    }
+   
+</style>
+
+{% endblock %}
