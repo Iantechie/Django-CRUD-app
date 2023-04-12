@@ -2,7 +2,19 @@
 
 {% block page_content %}
 <html>
-    <h1 class="btn-success text-center">Members</h1>
+<div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-danger" href="{% url 'logout' %}" style="text-decoration:none;">
+            <strong>Logout</strong>
+          </a>
+        </div>
+    </div>
+</div>
+<section>
+    <p class="text-center h3 p-5 mb-0">Welcome to your page {{user.username}}</p>
+    <p class="btn-success  h5 text-center p-5">List of Members</p>
+</section>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -18,15 +30,16 @@
                 <td>{{member.id}}</td>
                 <td>{{member.name}}</td> 
                 <td>{{member.email}}</td>
-                <td class="text-center"><a href="{% url 'members:update' member.id %}" class="text-info" style="text-decoration:none">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'members:delete' member.id %}" class="text-danger" style="text-decoration:none">Delete</a></td>
+                <td id="data" class="text-center"><a href="{% url 'members:update' member.id %}" class="text-info" style="text-decoration:none">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'members:delete' member.id %}" class="text-danger" onclick="handleClick()" style="text-decoration:none">Delete</a></td>
             
             </tr>
     
              {% endfor %}
         </tbody>
     </table>
+
     <p class="text-center h4">
-        <a href='add/' class="btn btn-info" style="text-decoration:none">Add Member</a>
+        <a href='add/' class="btn btn-info">Add Member</a>
     </p>
     </html>
 {% endblock %}
